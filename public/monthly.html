@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-navbar navbar-expand-lg">
+        <a class="navbar-brand h1" href="index.html">Expense App</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Monthly</a>
+                </li>
+            </ul>
+        </div>
+    </nav> <br>
+
+    <table class="table">
+        <tr>
+            <th>Month</th>
+            <th>Amount</th>
+        </tr>
+        <tr>
+            <td>January</td>
+            <td id="a01">0</td>
+        </tr>
+        <tr>
+            <td>February</td>
+            <td id="a02">0</td>
+        </tr>
+        <tr>
+            <td>March</td>
+            <td id="a03">0</td>
+        </tr>
+        <tr>
+            <td>April</td>
+            <td id="a04">0</td>
+        </tr>
+        <tr>
+            <td>May</td>
+            <td id="a05">0</td>
+        </tr>
+        <tr>
+            <td>June</td>
+            <td id="a06">0</td>
+        </tr>
+        <tr>
+            <td>July</td>
+            <td id="a07">0</td>
+        </tr>
+        <tr>
+            <td>August</td>
+            <td id="a08">0</td>
+        </tr>
+        <tr>
+            <td>September</td>
+            <td id="a09">0</td>
+        </tr>
+        <tr>
+            <td>October</td>
+            <td id="a10">0</td>
+        </tr>
+        <tr>
+            <td>November</td>
+            <td id="a11">0</td>
+        </tr>
+        <tr>
+            <td>December</td>
+            <td id="a11">0</td>
+        </tr>
+    </table>
+
+    <a href="index.html"> <button id="btn-back" type="button" class="btn btn-secondary">Back</button></a>
+    <button id="btn-back" type="button" class="btn btn-danger" onclick="clearMonthly()">Clear</button>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBg8cf9mQToNsrxKpC_UjxUy5h9ru615tg",
+            authDomain: "expense-app-21f51.firebaseapp.com",
+            databaseURL: "https://expense-app-21f51.firebaseio.com",
+            projectId: "expense-app-21f51",
+            storageBucket: "expense-app-21f51.appspot.com",
+            messagingSenderId: "479732432307"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="database.js"></script>
+</body>
+
+</html>
