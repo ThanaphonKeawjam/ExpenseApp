@@ -3,6 +3,7 @@ let description;
 let amount;
 let month;
 let year;
+let v;
 
 function addExpense(){
     date = document.getElementById('date').value;
@@ -13,22 +14,30 @@ function addExpense(){
     month = sp[1];
 
     if(amount !== '' || description !== '' || date != ''){
+        firebase.database().ref(`monthly/${month}`).on('value', (snapshot) => {
+            v = snapshot.val();
+        });
+
         firebase.database().ref(`expenses/${year}/${month}`).push({
             date: date,
             description: description,
             amount: amount,
         }).then(() => {
-            updateMonthly();
+            var total = parseInt(v.amount) + parseInt(amount);
+            updateMonthly(total);
             alert('Add Success');
-            location.reload();
         });
     }else{
         alert('please do not empty the fill');
     }
 }
 
-function updateMonthly(){
-    
+function updateMonthly(total){
+    firebase.database().ref(`monthly/${month}`).update({
+        amount: total
+    }).then(() => {
+        location.reload();
+    });
 }
 
 function clearMonthly(){
@@ -39,12 +48,14 @@ function clearMonthly(){
         if(i > 9) str = i;
         else str = '0' + i;
 
-        firebase.database().ref(`monthly/${str}`).set({
+        firebase.database().ref(`monthly/${str}`).update({
             amount: '0'
         });
 
         str = '';
     }
+
+    location.reload();
 }
 
 let loca = window.location.href;
@@ -67,5 +78,14 @@ if(loca.includes('index')){
             }
         }
     
+    });
+}else if(loca.includes('monthly')){
+    firebase.database().ref('monthly').once('value', (snapshot) => {
+        const value2 = snapshot.val();
+        const mo2 = Object.values(value2);
+        
+        for(let it of mo2){
+            document.getElementById(`a${it.month}`).innerText = it.amount;
+        }
     });
 }
